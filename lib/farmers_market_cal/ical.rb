@@ -11,8 +11,15 @@ module Icalendar2
       name "DTEND"
       # main code gets these backwards
       value :types => [:date_time, :date]
-   end
- end
+    end
+  end
+
+  module CalendarProperty
+    class Calname < Property::Base
+      name "X-WR-CALNAME"
+      value :types => [:text]
+    end
+  end
 end
 
 module FarmersMarketCal
@@ -23,6 +30,9 @@ module FarmersMarketCal
 
     def to_s
       cal = Icalendar2::Calendar.new
+      cal.version 2.0
+      cal.prodid "-//Justin Love//Farmers Market Cal//EN"
+      cal.set_property('calname', "Farmers Market Cal")
       year = today.year
       ical = self
       @events.each do |e|
