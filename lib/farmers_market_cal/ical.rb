@@ -25,14 +25,14 @@ module FarmersMarketCal
       cal = Icalendar2::Calendar.new
       year = today.year
       @events.each do |e|
+        next unless e[:season_start]
         cal.event do
           summary e[:title]
           description e[:products]
           url e[:profile]
-          if e[:season_start]
-            dtstart DateTime.new(*([year] + e[:season_start] + e[:time_start]))
-            dtend DateTime.new(*([year] + e[:season_end] + e[:time_end]))
-          end
+          dtstart DateTime.new(*([year] + e[:season_start] + e[:time_start]))
+          dtend DateTime.new(*([year] + e[:season_start] + e[:time_end]))
+          rrule "FREQ=WEEKLY;INTERVAL=1;BYDAY=#{e[:day_of_week][0,2].upcase};UNTIL=#{Date.new(*([year] + e[:season_end])).strftime('%Y%m%d')}"
         end
       end
 

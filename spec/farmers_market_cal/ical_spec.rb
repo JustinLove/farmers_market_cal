@@ -35,6 +35,8 @@ module FarmersMarketCal
     it {should match('National Day of Civic Hacking')}
     it {should match('hackforchange')}
     it {should match('20130601T090000')}
-    it {should match('20131028T140000')}
+    it {should match('20131028')}
+    it {should match('T140000')}
+    it {should_not match('two')}
   end
 end
