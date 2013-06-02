@@ -18,7 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-Primarly intended to run as a Heroku application.
+Primarly intended to run as a Heroku application.  The Sinatra application is modular, and the library can also be called directly.
+
+    FarmersMarketCal.zip('60177', 20) # => text of iCalendar
+
+    FarmersMarketCal.at(latitude, longitude, km)
 
 ## Contributing
 

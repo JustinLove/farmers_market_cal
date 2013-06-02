@@ -3,14 +3,16 @@
   <title>Farmers Market iCalendar</title>
 </head>
 <body>
+  <h1>Farmers Market iCalendar</h1>
+
   <form>
-    <p>
-      <label for="zip">Zip Code</label>
-      <input type="text" name="zip" value="<%= params[:zip] %>">
-    </p>
     <p>
       <label for="ll">Latitude, Longitude<label>
       <input type="text" name="ll" id="ll" size="40" value="<%= params[:ll] %>">
+    </p>
+    <p>
+      - or - <label for="zip">Zip Code</label>
+      <input type="text" name="zip" value="<%= params[:zip] %>">
     </p>
     <p>
       <label for="km">Range (km)</label>

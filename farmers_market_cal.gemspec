@@ -14,11 +14,24 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.files         = <<FILES.split($/)
+lib/farmers_market_cal/directory.rb
+lib/farmers_market_cal/ical.rb
+lib/farmers_market_cal/markets.rb
+lib/farmers_market_cal/server.rb
+lib/farmers_market_cal/version.rb
+lib/farmers_market_cal/views/index.erb
+lib/farmers_market_cal.rb
+config.ru
 LICENSE.txt
 Rakefile
 README.md
 FILES
   spec.test_files    = <<TEST.split($/)
+spec/farmers_market_cal/directory_spec.rb
+spec/farmers_market_cal/ical_spec.rb
+spec/farmers_market_cal/markets_spec.rb
+spec/fixtures/mktDetails.json
+spec/fixtures/zipSearch.json
 spec/spec_helper.rb
 TEST
   spec.require_paths = ["lib"]
