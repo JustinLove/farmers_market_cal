@@ -7,12 +7,19 @@ module FarmersMarketCal
       mime_type :ics, 'text/calendar'
     end
 
+    get '/' do
+      erb :index
+    end
+
     get '/farmers_markets.ics' do
+      if params['subscribe']
+        redirect request.url.gsub(/^http/, 'webcal')
+      end
       content_type :ics
-      if params[:zip]
+      if zip
         FarmersMarketCal.zip(zip, km)
-      elsif params[:ll]
-        lat, lng = *(params[:ll].split(','))
+      elsif ll
+        lat, lng = *(ll.split(','))
         FarmersMarketCal.at(lat.to_f, lng.to_f, km)
       else
         pass
@@ -25,7 +32,11 @@ module FarmersMarketCal
     end
 
     def zip
-      params[:zip]
+      params[:zip] && !params[:zip].empty? && params[:zip]
+    end
+
+    def ll
+      params[:ll] && !params[:ll].empty? && params[:ll]
     end
 
     def km
