@@ -30,9 +30,10 @@ module FarmersMarketCal
           :products => market['Products'],
         }
 
-        if market['Schedule']
+        if market['Schedule'] && !market['Schedule'].empty?
           match,season_start,season_end,dow,time_start,period_start,time_end,period_end = *market['Schedule'].gsub(/\s+/, ' ').match(/(\w+) - (\w+) (\w+) (\d\d?:\d\d) (.M) to (\d\d?:\d\d) (.M)/)
-          prop.merge({
+          next prop unless match
+          prop.merge!({
             :season_start => [Date.parse(season_start).month, 1],
             :season_end => [Date.parse(season_end).month, 28],
             :day_of_week => dow,
@@ -40,6 +41,8 @@ module FarmersMarketCal
             :time_end => parse_time(time_end, period_end),
           })
         end
+
+        prop
       end
     end
 
