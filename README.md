@@ -1,6 +1,6 @@
-# FarmersMarketCal
+# Farmers Market Calendar
 
-TODO: Write a gem description
+Take data from the [USDA Farmer's Market API](http://search.ams.usda.gov/farmersmarkets/v1/svcdesc.html) and present it as an iCalendar feed.
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Primarly intended to run as a Heroku application.
 
 ## Contributing
 
