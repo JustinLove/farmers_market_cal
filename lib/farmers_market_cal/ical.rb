@@ -30,7 +30,7 @@ module FarmersMarketCal
         cal.event do
           summary e[:title]
           description([e[:comment], e[:products]].join(' '))
-          url e[:profile]
+          url e[:map]
 
           st = ical.first(year, e[:season_start], e[:day_of_week])
           dtstart DateTime.new(*([year, st.month, st.day] + e[:time_start]))
