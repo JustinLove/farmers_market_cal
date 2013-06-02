@@ -6,15 +6,15 @@
   <form>
     <p>
       <label for="zip">Zip Code</label>
-      <input type="text" name="zip">
+      <input type="text" name="zip" value="<%= params[:zip] %>">
     </p>
     <p>
       <label for="ll">Latitude, Longitude<label>
-      <input type="text" name="ll">
+      <input type="text" name="ll" value="<%= params[:ll] %>">
     </p>
     <p>
       <label for="km">Range (km)</label>
-      <input type="text" name="km">
+      <input type="text" name="km" value="<%= km || 20.0 %>">
     </p>
     <p>
       <input type="submit" value="iCalendar">
