@@ -13,12 +13,11 @@ module FarmersMarketCal
 
     get '/farmers_markets.ics' do
       content_type :ics
-      p zip
-      if zip
-        FarmersMarketCal.zip(zip, km)
-      elsif ll
+      if ll
         lat, lng = *(ll.split(','))
         FarmersMarketCal.at(lat.to_f, lng.to_f, km)
+      elsif zip
+        FarmersMarketCal.zip(zip, km)
       else
         pass
       end

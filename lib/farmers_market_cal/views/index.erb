@@ -10,7 +10,7 @@
     </p>
     <p>
       <label for="ll">Latitude, Longitude<label>
-      <input type="text" name="ll" value="<%= params[:ll] %>">
+      <input type="text" name="ll" id="ll" size="40" value="<%= params[:ll] %>">
     </p>
     <p>
       <label for="km">Range (km)</label>
@@ -25,5 +25,15 @@
     <a href="<%= ics_url %>">Download iCalendar</a>
     <a href="<%= ics_url.sub(/^http/, 'webcal') %>">Subscribe iCalendar</a>
   <% end %>
+
+  <script>
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var latitude = position.coords.latitude.toString()
+        var longitude = position.coords.longitude.toString()
+        document.getElementById('ll').value = latitude + ',' + longitude
+      });
+    }
+  </script>
 </body>
 </html>
