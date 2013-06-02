@@ -24,15 +24,21 @@ module FarmersMarketCal
     def to_s
       cal = Icalendar2::Calendar.new
       year = today.year
+      ical = self
       @events.each do |e|
         next unless e[:season_start]
         cal.event do
           summary e[:title]
           description e[:products]
           url e[:profile]
-          dtstart DateTime.new(*([year] + e[:season_start] + e[:time_start]))
-          dtend DateTime.new(*([year] + e[:season_start] + e[:time_end]))
-          rrule "FREQ=WEEKLY;INTERVAL=1;BYDAY=#{e[:day_of_week][0,2].upcase};UNTIL=#{Date.new(*([year] + e[:season_end])).strftime('%Y%m%d')}"
+
+          st = ical.first(year, e[:season_start], e[:day_of_week])
+          dtstart DateTime.new(*([year, st.month, st.day] + e[:time_start]))
+          dtend DateTime.new(*([year, st.month, st.day] + e[:time_end]))
+
+          un = ical.last(year, e[:season_end], e[:day_of_week]).strftime('%Y%m%d')
+          dow = e[:day_of_week][0,2].upcase
+          rrule "FREQ=WEEKLY;INTERVAL=1;BYDAY=#{dow};UNTIL=#{un}"
         end
       end
 
@@ -41,6 +47,22 @@ module FarmersMarketCal
 
     def today
       Date.today
+    end
+
+    def first(year, month, day)
+      day = day.downcase + '?'
+      date = Date.new(year, month)
+      until date.__send__(day)
+        date += 1
+      end
+      date
+    end
+
+    def last(year, month, day)
+      day = day.downcase + '?'
+      date = Date.new(year, month) >> 1
+      date -= 1 until date.__send__(day)
+      date
     end
   end
 end

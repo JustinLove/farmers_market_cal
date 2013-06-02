@@ -9,8 +9,8 @@ module FarmersMarketCal
         {
           :title => 'National Day of Civic Hacking',
           :profile => 'http://hackforchange.org/',
-          :season_start => [6, 1],
-          :season_end => [10, 28],
+          :season_start => 6,
+          :season_end => 10,
           :day_of_week => 'Thursday',
           :time_start => [9, 0],
           :time_end => [14, 0],
@@ -34,8 +34,8 @@ module FarmersMarketCal
     it {should match('VEVENT')}
     it {should match('National Day of Civic Hacking')}
     it {should match('hackforchange')}
-    it {should match('20130601T090000')}
-    it {should match('20131028')}
+    it {should match('20130606T090000')}
+    it {should match('20131031')}
     it {should match('T140000')}
     it {should_not match('two')}
   end
