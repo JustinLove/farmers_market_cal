@@ -18,8 +18,9 @@ module FarmersMarketCal
         before do
           directory.stub(:get).and_return(search)
         end
-        it {subject.zip('60177').should have(20).items}
-        it {subject.at(42.16808, -88.428141).should have(20).items}
+        it {subject.zip('60177', 100).should have(20).items}
+        it {subject.zip('60177', 20).should have_at_most(19).items}
+        it {subject.at(42.16808, -88.428141, 100).should have(20).items}
       end
 
       describe 'find' do

@@ -24,6 +24,7 @@ module FarmersMarketCal
         prop = {
           :id => id,
           :title => i['marketname'].split(' ').drop(1).join(' '),
+          :distance_in_miles => i['marketname'].split(' ').first.to_f,
           :profile => 'http://search.ams.usda.gov/farmersmarkets/Row.aspx?ID=' + id,
           :map => market['GoogleLink'],
           :schedule => market['Schedule'],
