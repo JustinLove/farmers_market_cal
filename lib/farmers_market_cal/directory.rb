@@ -31,7 +31,7 @@ module FarmersMarketCal
     end
 
     def restrict(results, km)
-      miles = km / 1.609344
+      miles = (km || 20) / 1.609344
       results.select do |market|
         market['marketname'].split(' ').first.to_f < miles
       end

@@ -29,7 +29,7 @@ module FarmersMarketCal
         next unless e[:season_start]
         cal.event do
           summary e[:title]
-          description e[:products]
+          description([e[:comment], e[:products]].join(' '))
           url e[:profile]
 
           st = ical.first(year, e[:season_start], e[:day_of_week])
