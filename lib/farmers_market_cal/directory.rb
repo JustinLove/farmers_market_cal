@@ -22,7 +22,12 @@ module FarmersMarketCal
     end
 
     def consume
-      JSON.parse(yield)
+      response = JSON.parse(yield)
+      if response.include?('marketdetails')
+        response['marketdetails']
+      else
+        response['results']
+      end
     end
   end
 end
