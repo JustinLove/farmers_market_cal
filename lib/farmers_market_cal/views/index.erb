@@ -3,19 +3,27 @@
   <title>Farmers Market iCalendar</title>
 </head>
 <body>
-  <form action="/farmers_markets.ics">
+  <form>
     <p>
       <label for="zip">Zip Code</label>
       <input type="text" name="zip">
+    </p>
+    <p>
+      <label for="ll">Latitude, Longitude<label>
+      <input type="text" name="ll">
     </p>
     <p>
       <label for="km">Range (km)</label>
       <input type="text" name="km">
     </p>
     <p>
-      <input type="submit" name="download" value="Download iCalendar">
-      <input type="submit" name="subscribe" value="Subscribe iCalendar">
+      <input type="submit" value="iCalendar">
     </p>
   </form>
+
+  <% if zip || ll %>
+    <a href="<%= ics_url %>">Download iCalendar</a>
+    <a href="<%= ics_url.sub(/^http/, 'webcal') %>">Subscribe iCalendar</a>
+  <% end %>
 </body>
 </html>

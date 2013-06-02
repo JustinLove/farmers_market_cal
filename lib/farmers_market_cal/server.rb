@@ -12,10 +12,8 @@ module FarmersMarketCal
     end
 
     get '/farmers_markets.ics' do
-      if params['subscribe']
-        redirect request.url.gsub(/^http/, 'webcal')
-      end
       content_type :ics
+      p zip
       if zip
         FarmersMarketCal.zip(zip, km)
       elsif ll
@@ -40,7 +38,11 @@ module FarmersMarketCal
     end
 
     def km
-      params[:km] && params[:km].to_f
+      params[:km] && !params[:km].empty? && params[:km].to_f
+    end
+
+    def ics_url
+      request.url.sub('?', 'farmers_markets.ics?')
     end
   end
 end
