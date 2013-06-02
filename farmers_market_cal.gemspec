@@ -31,5 +31,6 @@ TEST
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "guard-process"
   spec.add_development_dependency "foreman"
 end
