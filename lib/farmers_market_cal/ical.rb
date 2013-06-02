@@ -23,16 +23,24 @@ module FarmersMarketCal
 
     def to_s
       cal = Icalendar2::Calendar.new
+      year = today.year
       @events.each do |e|
         cal.event do
           summary e[:title]
-          url e[:link]
-          dtstart(e[:time_start] || e[:date])
-          dtend(e[:time_end] || e[:date])
+          description e[:products]
+          url e[:profile]
+          if e[:season_start]
+            dtstart DateTime.new(*([year] + e[:season_start] + e[:time_start]))
+            dtend DateTime.new(*([year] + e[:season_end] + e[:time_end]))
+          end
         end
       end
 
       cal.to_ical
+    end
+
+    def today
+      Date.today
     end
   end
 end

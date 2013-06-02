@@ -8,16 +8,16 @@ module FarmersMarketCal
       [
         {
           :title => 'National Day of Civic Hacking',
-          :link => 'http://hackforchange.org/',
-          :date => Date.new(2013, 6, 1),
-          :all_day => true,
+          :profile => 'http://hackforchange.org/',
+          :season_start => [6, 1],
+          :season_end => [10, 28],
+          :day_of_week => 'Thursday',
+          :time_start => [9, 0],
+          :time_end => [14, 0],
         },
         {
           :title => 'two',
-          :link => 'twolink',
-          :date => Date.new(2013, 6, 1),
-          :time_start => DateTime.new(2013, 6, 1, 17, 0),
-          :time_end => DateTime.new(2013, 6, 1, 19, 0),
+          :profile => 'twolink',
         },
       ]
     }
@@ -25,12 +25,16 @@ module FarmersMarketCal
 
     subject {ical}
 
+    before do
+      ical.stub(:today).and_return(Date.new(2013, 6, 1))
+    end
+
     it {puts subject}
     it {should match('VCALENDAR')}
     it {should match('VEVENT')}
     it {should match('National Day of Civic Hacking')}
     it {should match('hackforchange')}
-    it {should match('20130601T170000')}
-    it {should match('20130601T190000')}
+    it {should match('20130601T090000')}
+    it {should match('20131028T140000')}
   end
 end
