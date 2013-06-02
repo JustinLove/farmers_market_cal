@@ -28,7 +28,6 @@ module FarmersMarketCal
       subject {markets.zip('60177').first}
       it {subject[:id].should == '1002692'}
       it {subject[:title].should == 'Downtown Elgin Harvest Market'}
-      it {subject[:profile].should == 'http://search.ams.usda.gov/farmersmarkets/Row.aspx?ID=1002692'}
       it {subject[:map].should == 'http://maps.google.com/?q=42.041325%2C%20-88.287334%20(%22Downtown+Elgin+Harvest+Market%22)'}
       it {subject[:schedule].should == 'June - October Thursday 9:00 AM to  2:00 PM'}
       it {subject[:day_of_week].should == 'Thursday'}

@@ -8,7 +8,7 @@ module FarmersMarketCal
       [
         {
           :title => 'National Day of Civic Hacking',
-          :profile => 'http://hackforchange.org/',
+          :map => 'http://hackforchange.org/',
           :season_start => 6,
           :season_end => 10,
           :day_of_week => 'Thursday',
