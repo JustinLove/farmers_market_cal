@@ -12,6 +12,7 @@ PATH
     farmers_market_cal (0.0.1)
       icalendar2
       json
+      redis
       sinatra
 
 GEM
@@ -55,6 +56,7 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
+    redis (3.0.4)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)

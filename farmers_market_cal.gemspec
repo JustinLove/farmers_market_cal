@@ -39,6 +39,7 @@ TEST
   spec.add_runtime_dependency "json"
   spec.add_runtime_dependency "icalendar2"
   spec.add_runtime_dependency "sinatra"
+  spec.add_runtime_dependency "redis"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"

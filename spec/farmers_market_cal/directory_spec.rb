@@ -32,8 +32,8 @@ module FarmersMarketCal
     end
 
     describe 'live', :online => true do
-      it {subject.zip('60177').should have_at_least(10).items}
-      it {subject.at(42.16808, -88.428141).should have_at_least(10).items}
+      it {subject.zip('60177').should have_at_least(5).items}
+      it {subject.at(42.16808, -88.428141).should have_at_least(5).items}
       it {subject.find('1002692').should include('Address')}
     end
   end

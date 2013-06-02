@@ -1,5 +1,6 @@
 require 'json'
 require 'open-uri'
+require 'redis'
 
 module FarmersMarketCal
   class Directory
@@ -18,7 +19,9 @@ module FarmersMarketCal
     end
 
     def get(url)
-      open(url).read
+      cache(url) do
+        open(url).read
+      end
     end
 
     def consume(km = nil)
@@ -34,6 +37,24 @@ module FarmersMarketCal
       miles = (km || 20) / 1.609344
       results.select do |market|
         market['marketname'].split(' ').first.to_f < miles
+      end
+    end
+
+    def cache(key)
+      return yield unless redis
+
+      cached = redis.get key
+      return cached if cached
+
+      response = yield
+      redis.setex key, (60*60*24*7), response
+      response
+    end
+
+    def redis
+      url = ENV['REDIS_URL'] || ENV['REDISTOGO_URL']
+      if url
+        @redis ||= Redis.new(:url => url)
       end
     end
   end
