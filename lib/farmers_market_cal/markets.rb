@@ -9,12 +9,12 @@ module FarmersMarketCal
 
     attr_accessor :connector
 
-    def at(latitude, longitude)
-      process connector.at(latitude, longitude)
+    def at(latitude, longitude, km = 20)
+      process connector.at(latitude, longitude, km)
     end
 
-    def zip(zip)
-      process connector.zip(zip)
+    def zip(zip, km = 20)
+      process connector.zip(zip, km)
     end
 
     def process(results)
