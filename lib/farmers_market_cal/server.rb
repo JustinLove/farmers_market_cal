@@ -7,21 +7,19 @@ module FarmersMarketCal
       mime_type :ics, 'text/calendar'
     end
 
-    get '/at.ics' do
+    get '/farmers_markets.ics' do
       content_type :ics
-      lat, lng = *(params[:ll].split(','))
-      FarmersMarketCal.at(lat.to_f, lng.to_f, km)
+      if params[:zip]
+        FarmersMarketCal.zip(zip, km)
+      elsif params[:ll]
+        lat, lng = *(params[:ll].split(','))
+        FarmersMarketCal.at(lat.to_f, lng.to_f, km)
+      else
+        pass
+      end
     end
 
-    get '/zip.ics' do
-      zip_ics
-    end
-
-    get '/:zip.ics' do
-      zip_ics
-    end
-
-    def zip_ics
+    get '/farmers_markets/:zip.ics' do
       content_type :ics
       FarmersMarketCal.zip(zip, km)
     end
