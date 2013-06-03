@@ -25,6 +25,7 @@ module FarmersMarketCal
           :id => id,
           :title => i['marketname'].split(' ').drop(1).join(' '),
           :distance_in_miles => i['marketname'].split(' ').first.to_f,
+          :address => market['Address'],
           :map => market['GoogleLink'],
           :schedule => market['Schedule'],
           :products => market['Products'],

@@ -41,6 +41,7 @@ module FarmersMarketCal
           summary e[:title]
           description([e[:comment], e[:products]].join(' '))
           url e[:map]
+          location e[:address]
 
           st = ical.first(year, e[:season_start], e[:day_of_week])
           dtstart DateTime.new(*([year, st.month, st.day] + e[:time_start]))
