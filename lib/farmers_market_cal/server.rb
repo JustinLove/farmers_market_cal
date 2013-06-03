@@ -5,6 +5,7 @@ module FarmersMarketCal
   class Server < Sinatra::Base
     configure do 
       mime_type :ics, 'text/calendar'
+      STDOUT.sync = true
     end
 
     get '/' do

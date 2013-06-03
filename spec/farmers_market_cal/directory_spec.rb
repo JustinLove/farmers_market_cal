@@ -10,8 +10,18 @@ module FarmersMarketCal
     def details
       @details ||= File.read('spec/fixtures/mktDetails.json')
     end
+    def trailing_comma
+      @trailing_comma ||= File.read('spec/fixtures/trailing-comma.json')
+    end
     let(:directory) {cut.new}
     subject {directory}
+
+    describe 'consume' do
+      it {subject.consume(100) {search}.should have(20).items}
+      it {subject.consume {details}.should include('Address')}
+      it {subject.consume(100) {trailing_comma}.should have(12).items}
+      it {subject.consume {raise JSON::ParserError}.should have(0).items}
+    end
 
     describe 'stubbed' do
       describe 'search' do

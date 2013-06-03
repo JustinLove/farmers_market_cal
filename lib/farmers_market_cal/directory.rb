@@ -19,18 +19,24 @@ module FarmersMarketCal
     end
 
     def get(url)
+      @url = url # debugging
       cache(url) do
         open(url).read
       end
     end
 
     def consume(km = nil)
-      response = JSON.parse(yield)
+      text = yield
+      response = JSON.parse(text.gsub(/},\s*]/, '}]'))
       if response.include?('marketdetails')
         response['marketdetails']
       else
         restrict(response['results'], km)
       end
+    rescue JSON::ParserError => e
+      puts "exception processing #{@url}" if @url
+      p e
+      []
     end
 
     def restrict(results, km)
