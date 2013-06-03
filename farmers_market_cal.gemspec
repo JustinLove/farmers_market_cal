@@ -32,6 +32,7 @@ spec/farmers_market_cal/ical_spec.rb
 spec/farmers_market_cal/markets_spec.rb
 spec/fixtures/mktDetails.json
 spec/fixtures/zipSearch.json
+spec/fixtures/trailing-comma.json
 spec/spec_helper.rb
 TEST
   spec.require_paths = ["lib"]
