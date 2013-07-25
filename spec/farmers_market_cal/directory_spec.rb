@@ -8,7 +8,7 @@ module FarmersMarketCal
       @search ||= File.read('spec/fixtures/zipSearch.json')
     end
     def details
-      @details ||= File.read('spec/fixtures/mktDetails.json')
+      @details ||= File.read('spec/fixtures/mktDetails20130724.json')
     end
     def trailing_comma
       @trailing_comma ||= File.read('spec/fixtures/trailing-comma.json')

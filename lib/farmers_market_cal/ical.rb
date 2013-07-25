@@ -33,7 +33,6 @@ module FarmersMarketCal
       cal.version 2.0
       cal.prodid "-//Justin Love//Farmers Market Cal//EN"
       cal.set_property('calname', "Farmers Market Cal")
-      year = today.year
       ical = self
       @events.each do |e|
         next unless e[:season_start]
@@ -43,37 +42,17 @@ module FarmersMarketCal
           url e[:map]
           location e[:address]
 
-          st = ical.first(year, e[:season_start], e[:day_of_week])
-          dtstart DateTime.new(*([year, st.month, st.day] + e[:time_start]))
-          dtend DateTime.new(*([year, st.month, st.day] + e[:time_end]))
+          st = e[:season_start]
+          dtstart DateTime.new(*([st.year, st.month, st.day] + e[:time_start]))
+          dtend DateTime.new(*([st.year, st.month, st.day] + e[:time_end]))
 
-          un = ical.last(year, e[:season_end], e[:day_of_week]).strftime('%Y%m%d')
+          un = e[:season_end].strftime('%Y%m%d')
           dow = e[:day_of_week][0,2].upcase
           rrule "FREQ=WEEKLY;INTERVAL=1;BYDAY=#{dow};UNTIL=#{un}"
         end
       end
 
       cal.to_ical
-    end
-
-    def today
-      Date.today
-    end
-
-    def first(year, month, day)
-      day = day.downcase + '?'
-      date = Date.new(year, month)
-      until date.__send__(day)
-        date += 1
-      end
-      date
-    end
-
-    def last(year, month, day)
-      day = day.downcase + '?'
-      date = Date.new(year, month) >> 1
-      date -= 1 until date.__send__(day)
-      date
     end
   end
 end

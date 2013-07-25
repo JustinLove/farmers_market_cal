@@ -27,7 +27,7 @@ module FarmersMarketCal
 
     def consume(km = nil)
       text = yield
-      response = JSON.parse(text.gsub(/},\s*]/, '}]'))
+      response = JSON.parse(text.gsub(/},\s*\]/, '}]'))
       if response.include?('marketdetails')
         response['marketdetails']
       else
