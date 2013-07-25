@@ -32,7 +32,7 @@ module FarmersMarketCal
         it {subject[:title].should == 'Downtown Elgin Harvest Market'}
         it {subject[:map].should == 'http://maps.google.com/?q=42.041325%2C%20-88.287334%20(%22Downtown+Elgin+Harvest+Market%22)'}
         it {subject[:schedule].should == '06/06/2013 to 10/03/2013 Thu: 9:00 AM-2:00 PM;<br> <br> <br> '}
-        it {subject[:day_of_week].should == 'Thu'}
+        it {subject[:day_of_week].should == 'thursday'}
         it {subject[:season_start].should == Date.new(2013, 6, 6)}
         it {subject[:season_end].should == Date.new(2013, 10, 3)}
         it {subject[:time_start].should == [9, 0]}
@@ -65,7 +65,7 @@ module FarmersMarketCal
         it {subject[:title].should == 'Downtown Elgin Harvest Market'}
         it {subject[:map].should == 'http://maps.google.com/?q=42.041325%2C%20-88.287334%20(%22Downtown+Elgin+Harvest+Market%22)'}
         it {subject[:schedule].should == 'June - October Thursday 9:00 AM to  2:00 PM'}
-        it {subject[:day_of_week].should == 'Thursday'}
+        it {subject[:day_of_week].should == 'thursday'}
         it {subject[:season_start].should == Date.new(2013, 6, 6)}
         it {subject[:season_end].should == Date.new(2013, 10, 31)}
         it {subject[:time_start].should == [9, 0]}

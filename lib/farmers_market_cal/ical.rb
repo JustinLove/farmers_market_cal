@@ -46,9 +46,14 @@ module FarmersMarketCal
           dtstart DateTime.new(*([st.year, st.month, st.day] + e[:time_start]))
           dtend DateTime.new(*([st.year, st.month, st.day] + e[:time_end]))
 
-          un = e[:season_end].strftime('%Y%m%d')
           dow = e[:day_of_week][0,2].upcase
-          rrule "FREQ=WEEKLY;INTERVAL=1;BYDAY=#{dow};UNTIL=#{un}"
+
+          if e[:season_end]
+            un = e[:season_end].strftime('%Y%m%d')
+            rrule "FREQ=WEEKLY;INTERVAL=1;BYDAY=#{dow};UNTIL=#{un}"
+          else
+            rrule "FREQ=WEEKLY;INTERVAL=1;BYDAY=#{dow}"
+          end
         end
       end
 
