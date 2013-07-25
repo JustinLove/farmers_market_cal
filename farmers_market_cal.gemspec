@@ -17,6 +17,7 @@ Gem::Specification.new do |spec|
 lib/farmers_market_cal/directory.rb
 lib/farmers_market_cal/ical.rb
 lib/farmers_market_cal/markets.rb
+lib/farmers_market_cal/schedule.rb
 lib/farmers_market_cal/server.rb
 lib/farmers_market_cal/version.rb
 lib/farmers_market_cal/views/index.erb
@@ -30,9 +31,11 @@ FILES
 spec/farmers_market_cal/directory_spec.rb
 spec/farmers_market_cal/ical_spec.rb
 spec/farmers_market_cal/markets_spec.rb
-spec/fixtures/mktDetails.json
-spec/fixtures/zipSearch.json
+spec/farmers_market_cal/schedule_spec.rb
+spec/fixtures/mktDetails20130601.json
+spec/fixtures/mktDetails20130724.json
 spec/fixtures/trailing-comma.json
+spec/fixtures/zipSearch.json
 spec/spec_helper.rb
 TEST
   spec.require_paths = ["lib"]
