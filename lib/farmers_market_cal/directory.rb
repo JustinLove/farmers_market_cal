@@ -4,7 +4,7 @@ require 'redis'
 
 module FarmersMarketCal
   class Directory
-    URL = 'http://search.ams.usda.gov/FarmersMarkets/v1/data.svc'
+    URL = 'https://search.ams.usda.gov/FarmersMarkets/v1/data.svc'
 
     def at(lat, lng, km = 20)
       consume(km) {get(URL+"/locSearch?lat=#{lat}&lng=#{lng}")}

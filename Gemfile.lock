@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    farmers_market_cal (0.1.0)
+    farmers_market_cal (0.1.1)
       icalendar2
       json
       redis

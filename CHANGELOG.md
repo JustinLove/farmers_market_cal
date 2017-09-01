@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- Change to https data source; they started redirecting, and OpenURI would not redirect.
+
 ## 0.1.0
 
 - USDA schedule format became inconsistent
