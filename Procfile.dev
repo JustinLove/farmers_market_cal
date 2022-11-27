@@ -1,1 +1,0 @@
-redis: redis-server db/redis/dev.conf
