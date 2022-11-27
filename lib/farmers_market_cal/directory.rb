@@ -21,7 +21,7 @@ module FarmersMarketCal
     def get(url)
       @url = url # debugging
       cache(url) do
-        open(url).read
+        URI.open(url).read
       end
     end
 

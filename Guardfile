@@ -1,8 +1,7 @@
 tag = "--tag #{ENV['TAG']}" if ENV['TAG']
 example = "-e '#{ENV['EXAMPLE']}'" if ENV['EXAMPLE']
 guard 'rspec',
-    :cli => "--color --format d #{tag} #{example}",
-    :bundler => false,
+    :cmd => "rspec --color --format d #{tag} #{example}",
     :spec_paths => ['spec'] do
 
   watch(%r{^spec/.+_spec\.rb$})

@@ -27,18 +27,18 @@ module FarmersMarketCal
     subject {ical}
 
     before do
-      ical.stub(:today).and_return(Date.new(2013, 6, 1))
+      allow(ical).to receive(:today).and_return(Date.new(2013, 6, 1))
     end
 
     it {puts subject}
-    it {should match('VCALENDAR')}
-    it {should match('VEVENT')}
-    it {should match('National Day of Civic Hacking')}
-    it {should match('hackforchange')}
-    it {should match('United States')}
-    it {should match('20130606T090000')}
-    it {should match('20131003')}
-    it {should match('T140000')}
-    it {should_not match('two')}
+    it {expect(subject).to match('VCALENDAR')}
+    it {expect(subject).to match('VEVENT')}
+    it {expect(subject).to match('National Day of Civic Hacking')}
+    it {expect(subject).to match('hackforchange')}
+    it {expect(subject).to match('United States')}
+    it {expect(subject).to match('20130606T090000')}
+    it {expect(subject).to match('20131003')}
+    it {expect(subject).to match('T140000')}
+    it {expect(subject).to_not match('two')}
   end
 end
