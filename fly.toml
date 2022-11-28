@@ -27,7 +27,7 @@ processes = []
     type = "connections"
 
   [[services.ports]]
-    force_https = true
+    force_https = false # no common tls ciphers with cloudfront
     handlers = ["http"]
     port = 80
 
