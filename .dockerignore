@@ -1,0 +1,18 @@
+# flyctl launch added from .gitignore
+**\*.gem
+**\*.rbc
+**\.bundle
+**\.config
+**\.yardoc
+**\.env
+**\InstalledFiles
+**\_yardoc
+**\coverage
+**\doc
+**\lib\bundler\man
+**\pkg
+**\rdoc
+**\spec\reports
+**\test\tmp
+**\test\version_tmp
+**\tmp

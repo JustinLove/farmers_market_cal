@@ -7,6 +7,6 @@ gemspec
 
 group :development do
   gem 'guard-process', :git => 'https://github.com/guard/guard-process.git', :require => false
-  gem 'wdm', '>= 0.1.0' if Gem.win_platform?
-  gem 'win32console' if Gem.win_platform?
+  gem 'wdm', '>= 0.1.0', :platforms => :mswin
+  gem 'win32console', :platforms => :mswin
 end
