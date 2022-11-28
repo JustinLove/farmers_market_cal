@@ -42,7 +42,7 @@ module FarmersMarketCal
     end
 
     def ics_url
-      request.url.sub('?', 'farmers_markets.ics?')
+      request.url.sub('?', 'farmers_markets.ics?').sub(/^https?/, 'https')
     end
   end
 end
