@@ -10,6 +10,8 @@ processes = []
 
 [env]
   PORT = "8080"
+  ICS_DOWNLOAD_URL = "https://farmers-market-cal.wondible.com/farmers_markets.ics"
+  ICS_WEBCAL_URL= "webcal://farmers-market-cal.wondible.com/farmers_markets.ics"
 
 [experimental]
   allowed_public_ports = []

@@ -27,8 +27,8 @@
   </form>
 
   <% if zip || ll %>
-    <a href="<%= ics_url %>">Download iCalendar</a>
-    <a href="<%= ics_url.sub(/^https?/, 'webcal') %>">Subscribe iCalendar</a>
+    <a href="<%= ics_download_url %>">Download iCalendar</a>
+    <a href="<%= ics_webcal_url %>">Subscribe iCalendar</a>
   <% end %>
 
 

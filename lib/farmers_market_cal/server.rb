@@ -41,8 +41,12 @@ module FarmersMarketCal
       params[:km] && !params[:km].empty? && params[:km].to_f
     end
 
-    def ics_url
-      request.url.sub('?', 'farmers_markets.ics?').sub(/^https?/, 'https')
+    def ics_download_url
+      (ENV['ICS_DOWNLOAD_URL'] || request.fullpath) + '?' + request.query_string
+    end
+
+    def ics_webcal_url
+      (ENV['ICS_WEBCAL_URL'] || request.fullpath.sub(/^https?/, 'webcal')) + '?' + request.query_string
     end
   end
 end
